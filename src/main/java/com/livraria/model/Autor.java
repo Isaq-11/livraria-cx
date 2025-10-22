@@ -15,8 +15,10 @@ public class Autor {
     @Column(nullable = false, length = 100)
     private String nome;
 
-    @ManyToMany(mappedBy = "autores")
-    private List<Livro> livros = new ArrayList<>();
+    //@Column(nullable = false, length = 20)
+
+    //@ManyToMany(mappedBy = "autores")
+    //private List<Livro> livros = new ArrayList<>();
 
 
     public Autor(){}
@@ -29,23 +31,23 @@ public class Autor {
     public String getNome() {return nome;}
     public void setNome(String nome) {this.nome=nome;}
 
-    public List<Livro> getLivros(){return livros;}
-    public void setLivros(List<Livro> livros) {this.livros=livros;}
+    //public List<Livro> getLivros(){return livros;}
+    //public void setLivros(List<Livro> livros) {this.livros=livros;}
+//
 
-
-    public void addLivro(Livro livro) {
-        if (!livros.contains(livro)) {
-            livros.add(livro);
-            livro.getAutores().add(this); // mantém consistência bidirecional
-        }
-    }
-
-    // Remove um livro do autor
-    public void removeLivro(Livro livro) {
-        if (livros.contains(livro)) {
-            livros.remove(livro);
-            livro.getAutores().remove(this); // mantém consistência bidirecional
-        }
-    }
+    //public void addLivro(Livro livro) {
+    //    if (!livros.contains(livro)) {
+    //        livros.add(livro);
+    //        livro.getAutores().add(this); // mantém consistência bidirecional
+    //    }
+    //}
+//
+    //// Remove um livro do autor
+    //public void removeLivro(Livro livro) {
+    //    if (livros.contains(livro)) {
+    //        livros.remove(livro);
+    //        livro.getAutores().remove(this); // mantém consistência bidirecional
+    //    }
+    //}
 
 }
