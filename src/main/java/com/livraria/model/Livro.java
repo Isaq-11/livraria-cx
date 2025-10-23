@@ -19,11 +19,20 @@ public class Livro {
     @Column(nullable = false, length = 6)
     private String ano;
 
-    @Column(nullable = false, length = 50)
-    private String editora;
+    @ManyToOne
+    @JoinColumn(name= "editora_id")
+    private Editora editora;
+
+    //@Column(nullable = false, length = 6)
+    private Fornecedor fornecedor;
+
+    //@Column(nullable = false, length = 6)
+    private Autor autor;
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal preco;
+
+
 
     //@ManyToMany
     //@JoinTable(name="autor_livro",
@@ -32,10 +41,9 @@ public class Livro {
     //private List<Autor> autores = new ArrayList<>();
 
     public Livro(){}
-    public Livro(String titulo, String ano, String editora, BigDecimal preco){
+    public Livro(String titulo, String ano, BigDecimal preco){
         this.titulo=titulo;
         this.ano = ano;
-        this.editora = editora;
         this.preco = preco;
     }
 

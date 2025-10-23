@@ -3,24 +3,16 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name= "fornecedor")
-public class Fornecedor extends Pessoa{
+public class Fornecedor extends Cnpj{
 
-    @Column(nullable = false, unique = true, length = 14)
-    private String cnpj;
-
-    @Column(nullable = false, unique = true, length = 100)
-    private String razaoSocial;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     public Fornecedor(){}
     public Fornecedor(String nome, String razaoSocial, String cnpj, String email, String telefone){
-        super(nome, email, telefone);
-        this.cnpj=cnpj;
-        this.razaoSocial = razaoSocial;
-    }
+        super(nome, cnpj, razaoSocial, email, telefone);
 
-    public String getCnpj() {return cnpj;}
-    public void setCnpj(String cnpj) {this.cnpj = cnpj;}
-
-    public String getRazaoSocial(){return razaoSocial;}
-    public void setRazaoSocial(String razaoSocial){this.razaoSocial = razaoSocial;}
+    public Long getId() {return id;}
+    public void setId(Long id) {this.id=id;}
 }
