@@ -12,6 +12,10 @@ public abstract class Pessoa {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    //@ManyToOne -== pensar melhor se devo implementar aqui, pois pra salvar um cliente/funcionario teria
+    //@JoinColumn(name= "endereco_id") == que persistir o endereco e dps salvar ele, o endereço e por fim persistir td
+    //private Endereco endereco;
+
     @Column(unique = true, length = 11, nullable = false)
     private String cpf;
 

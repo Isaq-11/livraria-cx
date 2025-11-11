@@ -1,13 +1,18 @@
 package com.livraria.model;
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @DiscriminatorValue("Cliente")
 public class Cliente extends Pessoa {
 
-    endereco
-    limite credito
-    ??historico compras;
+    private BigDecimal limiteCredito;
+    //??historico compras;
+
+
+
+
 
 
 }
