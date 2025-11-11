@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 @Table(name="livro")
 public class Livro {
-
+ classificalçao indicaiva
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
