@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Inheritance(strategy= InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name= "tipo", discriminatorType = DiscriminatorType.STRING, length = 20)
-@Table(name= "pessoa")
+@DiscriminatorColumn(name= "tipo_pf", discriminatorType = DiscriminatorType.STRING, length = 20)
+@Table(name= "pessoa_fisica")
 public abstract class PessoaFisica {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,8 +28,8 @@ public abstract class PessoaFisica {
     @Column(length = 20, nullable = false)
     private String telefone;
 
-    private LocalDateTime dataCriação;
-    private LocalDateTime dataAtualização;
+    private LocalDateTime dataCriacaoPF;
+    private LocalDateTime dataAtualizacaoPF;
 
     public PessoaFisica(){}
     public PessoaFisica(String nomeCompleto, String cpf, String email, String telefone){
@@ -39,11 +39,11 @@ public abstract class PessoaFisica {
         this.telefone= telefone;}
 
     @PrePersist
-    protected void onCreate(){this.dataCriação= LocalDateTime.now();
-        this.dataAtualização= LocalDateTime.now();}
+    protected void onCreate(){this.dataCriacaoPF= LocalDateTime.now();
+        this.dataAtualizacaoPF= LocalDateTime.now();}
 
     @PreUpdate
-    protected void onUpdate(){this.dataAtualização= LocalDateTime.now();}
+    protected void onUpdate(){this.dataAtualizacaoPF= LocalDateTime.now();}
 
     public String getNomeCompleto(){return nomeCompleto;}
     public void setNomeCompleto(String nomeCompleto){this.nomeCompleto= nomeCompleto;}
@@ -56,5 +56,9 @@ public abstract class PessoaFisica {
 
     public String getTelefone(){return telefone;}
     public void setTelefone(String telefone){this.telefone= telefone;}
+
+    public Long getId(){return id;}
+    public LocalDateTime getDataCriacaoPF(){return dataCriacaoPF;}
+    public LocalDateTime getDataAtualizacaoPF(){return dataAtualizacaoPF;}
 
 }
