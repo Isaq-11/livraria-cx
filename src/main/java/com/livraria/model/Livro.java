@@ -12,12 +12,13 @@ public class Livro {
     private int anoPublicacao;
     private int classificacaoIndicativa;
     private String isbn;
-    //autor
+    private Autor autor;
     private Editora editora;
     private BigDecimal preco;
     private int qtdeEstoque; // seria bom implementar uma classe só pra isso, mas por enquanto nao
 
-
+    public Livro(){}
+    public Livro(String titulo, int anoPublicacao, int classificacaoIndicativa){}
 
 
 }

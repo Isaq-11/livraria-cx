@@ -1,53 +1,44 @@
 package com.livraria.model;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="autor")
 public class Autor {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false, length = 100)
     private String nome;
+    private String sobrenome;
+    private String bibliografia= null;
 
-    //@Column(nullable = false, length = 20)
-
-    //@ManyToMany(mappedBy = "autores")
-    //private List<Livro> livros = new ArrayList<>();
-
+    private LocalDateTime dataCriacaoAutor;
+    private LocalDateTime dataAtualizacaoAutor;
 
     public Autor(){}
-    public Autor(String nome){this.nome = nome;}
+    public Autor(String nome, String sobrenome, String bibliografia){
+        this.nome= nome;
+        this.sobrenome= sobrenome;
+        this.bibliografia= bibliografia;
+    }
 
+    @PrePersist
+    public void onCreateAutor(){this.dataCriacaoAutor= LocalDateTime.now();
+        this.dataAtualizacaoAutor= LocalDateTime.now();}
 
-    public Long getId() {return id;}
-    public void setId(Long id) {this.id=id;};
+    @PreUpdate
+    public void onUpdateAutor(){this.dataAtualizacaoAutor= LocalDateTime.now();}
 
-    public String getNome() {return nome;}
-    public void setNome(String nome) {this.nome=nome;}
+    public String getNome(){return nome;}
+    public void setNome(String nome){this.nome= nome;}
 
-    //public List<Livro> getLivros(){return livros;}
-    //public void setLivros(List<Livro> livros) {this.livros=livros;}
-//
+    public String getSobrenome(){return sobrenome;}
+    public void setSobrenome(String sobrenome){this.sobrenome= sobrenome;}
 
-    //public void addLivro(Livro livro) {
-    //    if (!livros.contains(livro)) {
-    //        livros.add(livro);
-    //        livro.getAutores().add(this); // mantém consistência bidirecional
-    //    }
-    //}
-//
-    //// Remove um livro do autor
-    //public void removeLivro(Livro livro) {
-    //    if (livros.contains(livro)) {
-    //        livros.remove(livro);
-    //        livro.getAutores().remove(this); // mantém consistência bidirecional
-    //    }
-    //}
+    public String getBibliografia(){return bibliografia;}
+    public void setBibliografia(String bibliografia){this.bibliografia= bibliografia;}
 
+    public Long getId(){return id;}
+    public LocalDateTime getDataCriacaoAutor(){return dataCriacaoAutor;}
+    public LocalDateTime getDataAtualizacaoAutor(){return dataAtualizacaoAutor;}
 }
