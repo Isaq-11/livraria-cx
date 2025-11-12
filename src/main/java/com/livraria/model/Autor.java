@@ -7,9 +7,16 @@ import java.time.LocalDateTime;
 @Table(name="autor")
 public class Autor {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
+
+    @Column(name= "nome_autor", length = 25, nullable = false)
     private String nome;
+
+    @Column(name= "sobrenome_autor", length = 100, nullable = false)
     private String sobrenome;
+
     private String bibliografia= null;
 
     private LocalDateTime dataCriacaoAutor;
@@ -23,11 +30,11 @@ public class Autor {
     }
 
     @PrePersist
-    public void onCreateAutor(){this.dataCriacaoAutor= LocalDateTime.now();
+    protected void onCreateAutor(){this.dataCriacaoAutor= LocalDateTime.now();
         this.dataAtualizacaoAutor= LocalDateTime.now();}
 
     @PreUpdate
-    public void onUpdateAutor(){this.dataAtualizacaoAutor= LocalDateTime.now();}
+    protected void onUpdateAutor(){this.dataAtualizacaoAutor= LocalDateTime.now();}
 
     public String getNome(){return nome;}
     public void setNome(String nome){this.nome= nome;}
