@@ -1,13 +1,13 @@
 package com.livraria.model;
 import jakarta.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @Entity
 @Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name= "tipo", discriminatorType = DiscriminatorType.STRING, length = 20)
 @Table(name= "pessoa")
-public abstract class Pessoa {
+public abstract class PessoaFisica {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -15,6 +15,9 @@ public abstract class Pessoa {
     //@ManyToOne -== pensar melhor se devo implementar aqui, pois pra salvar um cliente/funcionario teria
     //@JoinColumn(name= "endereco_id") == que persistir o endereco e dps salvar ele, o endereço e por fim persistir td
     //private Endereco endereco;
+
+    @Column(name= "nome_completo", nullable = false)
+    private String nomeCompleto;
 
     @Column(unique = true, length = 11, nullable = false)
     private String cpf;
@@ -25,18 +28,22 @@ public abstract class Pessoa {
     @Column(length = 20, nullable = false)
     private String telefone;
 
-    @Column(name= "data_nascimento", nullable = false)
-    private LocalDate dataNascimento;
+    private LocalDateTime dataCriação;
+    private LocalDateTime dataAtualização;
 
-    private String nomeCompleto;
-
-    public Pessoa(){}
-    public Pessoa(String nomeCompleto, String cpf, String email, String telefone, LocalDate dataNascimento){
+    public PessoaFisica(){}
+    public PessoaFisica(String nomeCompleto, String cpf, String email, String telefone){
         this.nomeCompleto= nomeCompleto;
         this.cpf= cpf;
         this.email= email;
-        this.telefone= telefone;
-        this.dataNascimento= dataNascimento;}
+        this.telefone= telefone;}
+
+    @PrePersist
+    protected void onCreate(){this.dataCriação= LocalDateTime.now();
+        this.dataAtualização= LocalDateTime.now();}
+
+    @PreUpdate
+    protected void onUpdate(){this.dataAtualização= LocalDateTime.now();}
 
     public String getNomeCompleto(){return nomeCompleto;}
     public void setNomeCompleto(String nomeCompleto){this.nomeCompleto= nomeCompleto;}
@@ -49,8 +56,5 @@ public abstract class Pessoa {
 
     public String getTelefone(){return telefone;}
     public void setTelefone(String telefone){this.telefone= telefone;}
-
-    public LocalDate getDataNascimento(){return dataNascimento;}
-    public void setDataNascimento(LocalDate dataNascimento){this.dataNascimento= dataNascimento;}
 
 }
