@@ -7,15 +7,35 @@ import java.time.LocalDateTime;
 @Table(name= "livro")
 public class Livro {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(nullable = false, length = 100)
     private String titulo;
+
+    @Column(name= "ano_publicacao", length = 4, nullable = false)
     private int anoPublicacao;
-    private int classificacaoIndicativa;
+
+    @Column(name= "classificacao_indicativa", length = 2)
+    private int classificacaoIndicativa= 0;
+
+    @Column(unique = true, length = 13, nullable = false)
     private String isbn;
+
+    @ManyToOne
+    @JoinColumn(name= "autor_id", nullable = false)
     private Autor autor;
+
+    @ManyToOne
+    @JoinColumn(name= "editora_id", nullable = false)
     private Editora editora;
+
+    @Column(nullable = false)
     private BigDecimal preco;
-    private int qtdeEstoque; // seria bom implementar uma classe só pra isso, mas por enquanto nao
+
+    @Column(name= "qtde_estoque")
+    private int qtdeEstoque= 100; // seria bom implementar uma classe só pra isso, mas por enquanto nao
 
     private LocalDateTime dataCriacaoLivro;
     private LocalDateTime dataAtualizacaoLivro;
