@@ -1,20 +1,33 @@
 package com.livraria.model;
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name= "venda")
 public class Venda {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-    private Livro livro;
+
+    @ManyToOne
+    @JoinColumn(name= "cliente_id", nullable = false)
     private Cliente cliente;
+
+    @ManyToOne
+    @JoinColumn(name= "funcionario_id", nullable = false)
     private Funcionario funcionario;
+
+    @Column(name= "data_venda", nullable = false)
     private LocalDateTime dataVenda;
+
+    @Column(name= "valor_total", nullable = false, precision= 10, scale= 2)
     private BigDecimal valorTotal;
 
+    @Column(name= "data_criacao_venda", nullable = false)
     private LocalDateTime dataCriacaoVenda;
+    @Column(name= "data_atualizacao_venda", nullable = false)
     private LocalDateTime dataAtualizacaoVenda;
 
     public Venda(){}
@@ -45,5 +58,9 @@ public class Venda {
 
     public BigDecimal getValorTotal(){return valorTotal;}
     public void setValorTotal(BigDecimal valorTotal){this.valorTotal= valorTotal;}
+
+    public Long getId(){return id;}
+    public LocalDateTime getDataCriacaoVenda(){return dataCriacaoVenda;}
+    public LocalDateTime getDataAtualizacaoVenda(){return dataAtualizacaoVenda;}
 
 }

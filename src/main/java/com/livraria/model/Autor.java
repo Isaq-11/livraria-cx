@@ -19,7 +19,9 @@ public class Autor {
 
     private String bibliografia= null;
 
+    @Column(name= "data_criacao_autor", nullable = false)
     private LocalDateTime dataCriacaoAutor;
+    @Column(name= "data_atualizacao_autor", nullable = false)
     private LocalDateTime dataAtualizacaoAutor;
 
     public Autor(){}

@@ -31,13 +31,15 @@ public class Livro {
     @JoinColumn(name= "editora_id", nullable = false)
     private Editora editora;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision= 10, scale= 2)
     private BigDecimal preco;
 
     @Column(name= "qtde_estoque")
     private int qtdeEstoque= 100; // seria bom implementar uma classe só pra isso, mas por enquanto nao
 
+    @Column(name= "data_criacao_livro", nullable = false)
     private LocalDateTime dataCriacaoLivro;
+    @Column(name= "data_atualizacao_livro", nullable = false)
     private LocalDateTime dataAtualizacaoLivro;
 
     public Livro(){}

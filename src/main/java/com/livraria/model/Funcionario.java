@@ -13,6 +13,7 @@ public class Funcionario extends PessoaFisica {
     @Column(nullable = false)
     private LocalDate dataAdmissao;
 
+    @Column(nullable = false, precision= 10, scale= 2)
     private BigDecimal salario;
     //data de desligamento da pra pensar num futuro
 

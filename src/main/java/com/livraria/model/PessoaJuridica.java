@@ -1,6 +1,5 @@
 package com.livraria.model;
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -37,7 +36,9 @@ public abstract class PessoaJuridica {
     @Column(nullable = false, length = 8)
     private String cep;
 
+    @Column(name= "data_criacao_pj", nullable = false)
     private LocalDateTime dataCriacaoPJ;
+    @Column(name= "data_atualizacao_pj", nullable = false)
     private LocalDateTime dataAtualizacaoPJ;
 
     public PessoaJuridica(){}

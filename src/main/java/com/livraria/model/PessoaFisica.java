@@ -28,7 +28,9 @@ public abstract class PessoaFisica {
     @Column(length = 20, nullable = false)
     private String telefone;
 
+    @Column(name= "data_criacao_pf", nullable = false)
     private LocalDateTime dataCriacaoPF;
+    @Column(name= "data_atualizacao_pf", nullable = false)
     private LocalDateTime dataAtualizacaoPF;
 
     public PessoaFisica(){}
