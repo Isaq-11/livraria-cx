@@ -41,11 +41,13 @@ public abstract class PessoaFisica {
         this.telefone= telefone;}
 
     @PrePersist
-    protected void onCreate(){this.dataCriacaoPF= LocalDateTime.now();
+    protected void onCreatePF(){
+        this.dataCriacaoPF= LocalDateTime.now();
         this.dataAtualizacaoPF= LocalDateTime.now();}
 
     @PreUpdate
-    protected void onUpdate(){this.dataAtualizacaoPF= LocalDateTime.now();}
+    protected void onUpdatePF(){
+        this.dataAtualizacaoPF= LocalDateTime.now();}
 
     public String getNomeCompleto(){return nomeCompleto;}
     public void setNomeCompleto(String nomeCompleto){this.nomeCompleto= nomeCompleto;}

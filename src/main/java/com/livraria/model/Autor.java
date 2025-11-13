@@ -32,11 +32,13 @@ public class Autor {
     }
 
     @PrePersist
-    protected void onCreateAutor(){this.dataCriacaoAutor= LocalDateTime.now();
+    protected void onCreateAutor(){
+        this.dataCriacaoAutor= LocalDateTime.now();
         this.dataAtualizacaoAutor= LocalDateTime.now();}
 
     @PreUpdate
-    protected void onUpdateAutor(){this.dataAtualizacaoAutor= LocalDateTime.now();}
+    protected void onUpdateAutor(){
+        this.dataAtualizacaoAutor= LocalDateTime.now();}
 
     public String getNome(){return nome;}
     public void setNome(String nome){this.nome= nome;}

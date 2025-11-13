@@ -55,11 +55,13 @@ public class Livro {
         this.qtdeEstoque= qtdeEstoque;}
 
     @PrePersist
-    protected void onCreate(){this.dataCriacaoLivro= LocalDateTime.now();
+    protected void onCreateLivro(){
+        this.dataCriacaoLivro= LocalDateTime.now();
         this.dataAtualizacaoLivro= LocalDateTime.now();}
 
     @PreUpdate
-    protected void onUpdate(){this.dataAtualizacaoLivro= LocalDateTime.now();}
+    protected void onUpdateLivro(){
+        this.dataAtualizacaoLivro= LocalDateTime.now();}
 
     public String getTitulo(){return titulo;}
     public void setTitulo(String titulo){this.titulo= titulo;}

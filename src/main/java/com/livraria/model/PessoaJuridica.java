@@ -55,11 +55,13 @@ public abstract class PessoaJuridica {
         this.cep= cep;}
 
     @PrePersist
-    protected void onCreate(){this.dataCriacaoPJ= LocalDateTime.now();
+    protected void onCreatePJ(){
+        this.dataCriacaoPJ= LocalDateTime.now();
         this.dataAtualizacaoPJ= LocalDateTime.now();}
 
     @PreUpdate
-    protected void onUpdate(){this.dataAtualizacaoPJ= LocalDateTime.now();}
+    protected void onUpdatePJ(){
+        this.dataAtualizacaoPJ= LocalDateTime.now();}
 
     public String getNomeFantasia(){return nomeFantasia;}
     public void setNomeFantasia(String nomeFantasia){this.nomeFantasia= nomeFantasia;}

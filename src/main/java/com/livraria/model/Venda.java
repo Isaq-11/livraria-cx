@@ -40,11 +40,12 @@ public class Venda {
     }
 
     @PrePersist
-    protected void onCreate(){this.dataCriacaoVenda= LocalDateTime.now();
+    protected void onCreateVenda(){
+        this.dataCriacaoVenda= LocalDateTime.now();
         this.dataAtualizacaoVenda= LocalDateTime.now();}
 
     @PreUpdate
-    protected void onUpdate(){
+    protected void onUpdateVenda(){
         this.dataAtualizacaoVenda= LocalDateTime.now();}
 
     public Cliente getCliente(){return cliente;}
