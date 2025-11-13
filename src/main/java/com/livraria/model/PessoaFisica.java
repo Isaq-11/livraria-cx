@@ -1,7 +1,7 @@
 package com.livraria.model;
+
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
-
 
 @Entity
 @Inheritance(strategy= InheritanceType.SINGLE_TABLE)
