@@ -19,7 +19,7 @@
         <class>com.livraria.model.PessoaFisica</class>
         <class>com.livraria.model.PessoaJuridica</class>
         <class>com.livraria.model.Venda</class>
-        <class>com.livraria.model.VendaItem</class>
+        <class>com.livraria.model.VendaLivro</class>
 
 
         <properties>

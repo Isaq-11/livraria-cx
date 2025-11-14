@@ -10,6 +10,7 @@ public abstract class DAOGenericoAbstrato<T, ID extends Serializable> implements
         InterfaceDAOGenerica<T, ID>{
 
     protected EntityManager em= EMF.getEntityManager();
+
     private final Class<T> entityClass;
 
     @SuppressWarnings("unchecked")

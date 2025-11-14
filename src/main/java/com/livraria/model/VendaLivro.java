@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name= "venda_item")
-public class VendaItem {
+@Table(name= "venda_livro")
+public class VendaLivro {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -26,26 +26,26 @@ public class VendaItem {
     @Column(name="valor_unitario", nullable = false, precision=10, scale = 2)
     private BigDecimal valorUnitario;
 
-    @Column(name="data_criacao_vendaitem", nullable = false)
-    private LocalDateTime dataCriacaoVendaItem;
-    @Column(name= "data_atualizacao_vendaitem", nullable = false)
-    private LocalDateTime dataAtualizacaoVendaItem;
+    @Column(name="data_criacao_vendaLivro", nullable = false)
+    private LocalDateTime dataCriacaoVendaLivro;
+    @Column(name= "data_atualizacao_vendaLivro", nullable = false)
+    private LocalDateTime dataAtualizacaoVendaLivro;
 
-    public VendaItem(){}
-    public VendaItem(Venda venda, Livro livro, int quantidade, BigDecimal valorUnitario){
+    public VendaLivro(){}
+    public VendaLivro(Venda venda, Livro livro, int quantidade, BigDecimal valorUnitario){
         this.venda= venda;
         this.livro= livro;
         this.quantidade= quantidade;
         this.valorUnitario= valorUnitario;}
 
     @PrePersist
-    protected void onCreateVendaItem(){
-        this.dataCriacaoVendaItem= LocalDateTime.now();
-        this.dataAtualizacaoVendaItem= LocalDateTime.now();}
+    protected void onCreateVendaLivro(){
+        this.dataCriacaoVendaLivro= LocalDateTime.now();
+        this.dataAtualizacaoVendaLivro= LocalDateTime.now();}
 
     @PreUpdate
-    protected void onUpdateVendaItem(){
-        this.dataAtualizacaoVendaItem= LocalDateTime.now();}
+    protected void onUpdateVendaLivro(){
+        this.dataAtualizacaoVendaLivro= LocalDateTime.now();}
 
     public Venda getVenda(){return venda;}
     public void setVenda(Venda venda){this.venda= venda;}
@@ -60,6 +60,6 @@ public class VendaItem {
     public void setValorUnitario(BigDecimal valorUnitario){this.valorUnitario= valorUnitario;}
 
     public Long getId(){return id;}
-    public LocalDateTime getDataCriacaoVendaItem(){return dataCriacaoVendaItem;}
-    public LocalDateTime getDataAtualizacaoVendaItem(){return dataAtualizacaoVendaItem;}
+    public LocalDateTime getDataCriacaoVendaLivro(){return dataCriacaoVendaLivro;}
+    public LocalDateTime getDataAtualizacaoVendaLivro(){return dataAtualizacaoVendaLivro;}
 }
